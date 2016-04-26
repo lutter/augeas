@@ -26,12 +26,6 @@ let to_comment_re =
   in let to_comment_noquote = /[^\n \t'"#][^\n#]*[^\n \t#]|[^\n \t'"#]/
   in to_comment_squote | to_comment_dquote | to_comment_noquote
 
-let some_value = Sep.space_equal . store to_comment_re
-let empty_value = del /[ \t]*=/ "=" . store ""
-let x = [some_value]|[empty_value]
-let _ = print_regexp (lens_atype [ key /a/ . store ""]); print_endline "";
-        print_regexp (lens_atype [ key /a/ ]); print_endline ""
-
 (* View: entry *)
 let entry =
   (* Handle the three different kinds of lines we need to deal with:

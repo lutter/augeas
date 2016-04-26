@@ -327,7 +327,7 @@ daemon.info                                     /var/log/cvsupd.log
 	(* inserting a reverse matching hostname *)
 	test Syslog.lns put "" after
 	  insa "hostname" "/" ;
-	  set "/hostname/reverse" "" ;
+	  clear "/hostname/reverse";
 	  set "/hostname/hostname" "foo.foo.away"
 	  = "-foo.foo.away\n"
 

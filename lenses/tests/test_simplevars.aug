@@ -38,7 +38,7 @@ test Simplevars.lns get "foo =\n" =
 (* Test changing from empty_value to some_value
    issue 362 *)
 test Simplevars.lns put "EMPTY=\n" after
-  set "/EMPTY" "not anymore" = ?
+  set "/EMPTY" "not anymore" = "EMPTY=not anymore\n"
 
 (* key\s*=\s*value\s*\n -> { "key" = "value" }
    key\s*=\s*\n         -> { "key" = "" }
