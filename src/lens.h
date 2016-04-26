@@ -225,7 +225,7 @@ void free_lens(struct lens *lens);
  */
 #define ENC_EQ        "\003"
 #define ENC_SLASH     "\004"
-#define ENC_NULL      ""
+#define ENC_NULL      "\005"
 #define ENC_EQ_CH     (ENC_EQ[0])
 #define ENC_SLASH_CH  (ENC_SLASH[0])
 
@@ -235,7 +235,7 @@ void free_lens(struct lens *lens);
    This range must include the ENC_* characters
 */
 #define RESERVED_FROM '\001'
-#define RESERVED_TO   ENC_SLASH_CH
+#define RESERVED_TO   (ENC_NULL[0])
 
 /* The length of the string S encoded */
 #define ENCLEN(s) ((s) == NULL ? strlen(ENC_NULL) : strlen(s))

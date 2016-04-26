@@ -133,7 +133,7 @@ unset ONBOOT    #   We do not want this var
   = "var=value\n"
 
   test lns put "var=(v1 v2)\n" after
-    set "var/3" "v3"
+    set "/var/3" "v3"
   = "var=(v1 v2 v3)\n"
 
   test lns get "var=(v1 v2   \n    \t v3)\n" =

@@ -79,6 +79,5 @@ module Test_mke2fs =
 
 test Mke2fs.fs_types_entry
    put "features = has_journal,^extent\n"
-   after set "/features/has_journal/disable" "";
+   after clear "/features/has_journal/disable" ;
    rm "/features/extent/disable" = "features = ^has_journal,extent\n"
-

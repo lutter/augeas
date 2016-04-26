@@ -54,6 +54,4 @@ test Resolv.lns get conf =
 
 test Resolv.ip6_dotint
    put "ip6-dotint"
-   after set "/ip6-dotint/negate" "" = "no-ip6-dotint"
-
-
+   after clear "/ip6-dotint/negate" = "no-ip6-dotint"

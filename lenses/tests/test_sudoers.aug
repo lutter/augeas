@@ -201,14 +201,14 @@ www-data +biglab=(rpinson)NOEXEC: ICAL \
 
 test Sudoers.parameter_integer_bool
     put "umask = 022"
-    after set "/umask/negate" ""  = "!umask"
+    after clear "/umask/negate" = "!umask"
 
 test Sudoers.parameter_integer_bool
     put "!!!!!umask"
     after rm "/umask/negate"; set "/umask" "022" = "!!!!umask = 022"
 
 test Sudoers.parameter_integer_bool put "!!!!umask = 022" after
-    set "/umask/negate" "" = "!!!!!umask"
+    clear "/umask/negate" = "!!!!!umask"
 
 test Sudoers.parameter_integer_bool get "!!!umask = 022" = *
 

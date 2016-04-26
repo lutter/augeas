@@ -26,14 +26,26 @@ let to_comment_re =
   in let to_comment_noquote = /[^\n \t'"#][^\n#]*[^\n \t#]|[^\n \t'"#]/
   in to_comment_squote | to_comment_dquote | to_comment_noquote
 
+let some_value = Sep.space_equal . store to_comment_re
+let empty_value = del /[ \t]*=/ "=" . store ""
+let x = [some_value]|[empty_value]
+let _ = print_regexp (lens_atype [ key /a/ . store ""]); print_endline "";
+        print_regexp (lens_atype [ key /a/ ]); print_endline ""
+
 (* View: entry *)
 let entry =
-     let some_value = Sep.space_equal . store to_comment_re
-     (* Avoid ambiguity in tree by making a subtree here *)
-  in let empty_value = [del /[ \t]*=/ "="] . store ""
-  in [ Util.indent . key Rx.word
-            . (some_value? | empty_value)
-            . (Util.eol | Util.comment_eol) ]
+  (* Handle the three different kinds of lines we need to deal with:
+     key=value  -> { "key" = "value" }
+     key=\n     -> { "key" = "" }
+     key\n      -> { "key" } *)
+  let entry_for (l:lens) =
+    [ Util.indent . key Rx.word . l . (Util.eol | Util.comment_eol) ] in
+  let some_value = Sep.space_equal . store to_comment_re in
+  let empty_value = del /[ \t]*=/ "=" . store "" in
+  (entry_for some_value
+  |entry_for empty_value
+  |(* This is entry_for with no lens at all *)
+    [Util.indent . key Rx.word . (Util.eol | Util.comment_eol) ])
 
 (* View: lns *)
 let lns = (Util.empty | Util.comment | entry)*

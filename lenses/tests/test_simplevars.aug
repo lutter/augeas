@@ -33,4 +33,13 @@ test Simplevars.lns get "dnsadminapp\n" =
 (* Test: Simplevars.lns
      Support empty values *)
 test Simplevars.lns get "foo =\n" =
-  { "foo" = "" { } }
+  { "foo" = "" }
+
+(* Test changing from empty_value to some_value
+   issue 362 *)
+test Simplevars.lns put "EMPTY=\n" after
+  set "/EMPTY" "not anymore" = ?
+
+(* key\s*=\s*value\s*\n -> { "key" = "value" }
+   key\s*=\s*\n         -> { "key" = "" }
+   key\s*\n             -> { "key" } *)

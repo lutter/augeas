@@ -171,9 +171,9 @@ test Debctrl.lns put (source."\nPackage: test\nDescription: foobar\n")
   set "/srcpkg/Build-Depends-Indep/and[1]/or/perl/arch/name" "hurd-i386" ;
   set "/srcpkg/Build-Depends-Indep/and[2]/or[1]/perl-modules/version/relation" ">=" ;
   set "/srcpkg/Build-Depends-Indep/and[2]/or[1]/perl-modules/version/number" "5.10" ;
-  set "/srcpkg/Build-Depends-Indep/and[2]/or[2]/libmodule-build-perl" "";
-  set "/srcpkg/Build-Depends-Indep/and[3]/or/libcarp-assert-more-perl" "" ;
-  set "/srcpkg/Build-Depends-Indep/and[4]/or/libconfig-tiny-perl" "" ;
+  clear "/srcpkg/Build-Depends-Indep/and[2]/or[2]/libmodule-build-perl";
+  clear "/srcpkg/Build-Depends-Indep/and[3]/or/libcarp-assert-more-perl";
+  clear "/srcpkg/Build-Depends-Indep/and[4]/or/libconfig-tiny-perl";
   set "/binpkg[1]/Package" "libconfig-model-perl"  ; 
   (* must remove description because set cannot insert Archi before description *)
   rm  "/binpkg[1]/Description" ;
