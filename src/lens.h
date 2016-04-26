@@ -228,6 +228,7 @@ void free_lens(struct lens *lens);
 #define ENC_NULL      "\005"
 #define ENC_EQ_CH     (ENC_EQ[0])
 #define ENC_SLASH_CH  (ENC_SLASH[0])
+#define IS_ENC_NULL(s) (STREQLEN(ENC_NULL, (s), strlen(ENC_NULL)))
 
 /* The reserved range of characters that we do not allow in user-supplied
    regular expressions, since we need them for internal bookkeeping.

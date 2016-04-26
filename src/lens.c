@@ -1098,7 +1098,7 @@ char *enc_format(const char *e, size_t len) {
             r = stpncpy(r, k, eq - k);
             r = stpcpy(r, "\"");
         }
-        if (v != slash) {
+        if (!IS_ENC_NULL(v)) {
             r = stpcpy (r, " = \"");
             r = stpncpy(r, v, slash - v);
             r = stpcpy(r, "\"");
