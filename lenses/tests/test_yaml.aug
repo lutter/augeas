@@ -70,7 +70,7 @@ test YAML.lns get "abc:
 \n" =
   { "abc"
     { "def"
-      { "@mval"
+      { "@mlit" = "strip"
         { "@line" = "ghi" } } } }
 
 test YAML.lns get "abc:
@@ -79,5 +79,5 @@ test YAML.lns get "abc:
 \n" =
   { "abc"
     { "def"
-      { "@mlitclip"
+      { "@mlit" = "clip"
         { "@line" = "ghi" } } } }
